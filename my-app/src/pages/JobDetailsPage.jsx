@@ -31,10 +31,8 @@ const JobDetailsPage=()=>{
                 </div>
               </div>
             </div>
-        
         </div>
-        </main>
-        
+        </main> 
         </>
     )
 }
