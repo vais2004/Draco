@@ -30,13 +30,15 @@ const JobDetailsPage=()=>{
     return(
         <>
         <Header/>
-        <main className="container my-3">
+        <main className="container my-5">
         {detail ? (
+          
           <div className="row">
-            <div key={detail._id} className="col-md-12">
+            <h2>{detail.jobTitle}</h2>
+            <div key={detail._id} className="col-md-12 mt-2">
               <div className="card">
                 <div className="card-body">
-                  <h2>{detail.jobTitle}</h2>
+                  
                   <p><strong>Company Name:</strong> {detail.companyDetails.companyName}</p>
                   <p><strong>Location:</strong> {detail.companyDetails.location}</p>
                   <p><strong>Salary:</strong> {detail.companyDetails.salary}</p>
