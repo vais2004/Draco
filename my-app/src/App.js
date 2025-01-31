@@ -13,6 +13,8 @@ function App() {
 
 const [jobDetails, setJobDetails]=useState()
 
+const [search, setSearch] = useState('')
+
   const { data, loading, error } = useFetch('https://ophiuchus.vercel.app/detail/all');
 
   const handleDelete = async(detailId)=>{
@@ -59,18 +61,21 @@ const [jobDetails, setJobDetails]=useState()
     navigate(`/detial/${detailId}`)
   }
 
+  const fileredData = data?.filter((detail)=> detail.jobTitle.toLowerCase().includes(search.toLowerCase())
+)
+
   return (
     <>
       <Header />
       <br />
       <main className="container">
       <form class="col-md-4 my-3" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search job by title" aria-label="Search"/>
+        <input class="form-control me-2" type="search" placeholder="Search job by title" aria-label="Search" value={search} onChange={(e)=> setSearch(e.target.value)}/>
       </form>
         <h1>All Jobs</h1>
         {loading&&<p className='alert alert-primary'>Loading...</p>}
          <div className="row">
-          {data?.map((detail) => (
+          {fileredData?.map((detail) => (
             <div key={detail._id} className="col-md-4 mb-3">
               <div className="card py-3">
                 <div className="card-body">

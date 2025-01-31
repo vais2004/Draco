@@ -42,6 +42,7 @@ const JobDetailsPage=()=>{
                   <p><strong>Salary:</strong> {detail.companyDetails.salary}</p>
                   <p><strong>Job Type:</strong> {detail.companyDetails.jobType}</p>
                   <p><strong>Description:</strong> {detail.jobDescription}</p>
+                  <p><strong>Qualifications:</strong></p>
                   <ul><li>{detail.qualifications}</li></ul>
                 </div>
               </div>
