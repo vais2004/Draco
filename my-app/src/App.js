@@ -56,7 +56,7 @@ const [jobDetails, setJobDetails]=useState()
 
   const navigate= useNavigate()
   const handleDetails=(detailId)=>{
-    navigate(`detail/${detailId}`)
+    navigate(`/detial/${detailId}`)
   }
 
   return (
@@ -64,6 +64,9 @@ const [jobDetails, setJobDetails]=useState()
       <Header />
       <br />
       <main className="container">
+      <form class="col-md-4 my-3" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search job by title" aria-label="Search"/>
+      </form>
         <h1>All Jobs</h1>
         {loading&&<p className='alert alert-primary'>Loading...</p>}
          <div className="row">

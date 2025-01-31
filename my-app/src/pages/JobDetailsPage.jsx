@@ -4,7 +4,8 @@ import { useState, useEffect } from "react"
 
 const JobDetailsPage=()=>{
 
-  const {detailId}=useParams()
+  const { detailId } = useParams();
+
   const[detail, setDetails] =useState()
 
   useEffect(()=>{
