@@ -50,6 +50,7 @@ const PostAJob = () => {
 
             const data = await response.json();
             console.log("Added Job Detail:", data);
+            window.location.reload()
 
         } catch (error) {
             console.log(error.message);

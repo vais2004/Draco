@@ -4,9 +4,60 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Header from './components/Header';
 import useFetch from './useFetch';
+import { useState } from 'react';
+import { useNavigate, useParams } from "react-router-dom"
+
 
 function App() {
+  const [successMessage,setSuccessMessage]=useState("")
+
+const [jobDetails, setJobDetails]=useState()
+
   const { data, loading, error } = useFetch('https://ophiuchus.vercel.app/detail/all');
+
+  const handleDelete = async(detailId)=>{
+    try{
+      const response = await fetch(`https://ophiuchus.vercel.app/detail/${detailId}`,
+        {method: 'DELETE',}
+      )
+
+      if(!response.ok){
+        throw 'failed to delete movie.'
+      }
+
+      const data=await response.json()
+      if(data){
+        setSuccessMessage('Movie deleted successfully')
+        window.location.reload()
+      }
+
+      }catch(error){
+        console.log(error)
+      }
+  }
+
+  // const handleDetails= async(detailId)=>{
+  //   try{
+  //     const response = await fetch(`https://ophiuchus.vercel.app/detail/${detailId}`,
+  //       {method: 'GET',}
+  //     )
+
+  //     if(!response.ok){
+  //       throw 'failed to fetch job details.'
+  //     }
+
+  //     const data=await response.json()
+  //     setJobDetails(data)
+
+  //   }catch(error){
+  //     console.log(error)
+  //   }
+  // }
+
+  const navigate= useNavigate()
+  const handleDetails=(detailId)=>{
+    navigate(`detail/${detailId}`)
+  }
 
   return (
     <>
@@ -14,7 +65,8 @@ function App() {
       <br />
       <main className="container">
         <h1>All Jobs</h1>
-        <div className="row">
+        {loading&&<p className='alert alert-primary'>Loading...</p>}
+         <div className="row">
           {data?.map((detail) => (
             <div key={detail._id} className="col-md-4 mb-3">
               <div className="card py-3">
@@ -29,10 +81,10 @@ function App() {
                   <p className="card-text">
                     <strong>Job Type:</strong> {detail.companyDetails.jobType}
                   </p>
-                  <a href="/" className="btn btn-primary col-4 me-2">
+                  <a  className="btn btn-primary col-4 me-2" onClick={()=>handleDetails(detail._id)}>
                     See Details
                   </a>
-                  <a href="/" className="col-4 btn btn-danger">
+                  <a className="col-4 btn btn-danger" onClick={()=>handleDelete(detail._id)}>
                     Delete
                   </a>
                 </div>
@@ -40,6 +92,7 @@ function App() {
             </div>
           ))}
         </div>
+        <p>{successMessage}</p>
       </main>
     </>
   );

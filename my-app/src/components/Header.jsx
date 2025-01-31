@@ -32,38 +32,3 @@ const Header = () => {
 
 export default Header;
 
-//     <header className="navbar navbar-expand-lg navbar-light bg-primary text-light">
-//     <div className="container">
-//       <Link to="/" className="navbar-brand">
-//      Intern House
-//       </Link>
-//       <button
-//         className="navbar-toggler"
-//         type="button"
-//         data-bs-toggle="collapse"
-//         data-bs-target="#navbarNav"
-//         aria-controls="navbarNav"
-//         aria-expanded="false"
-//         aria-label="Toggle navigation"
-//       >
-//         <span className="navbar-toggler-icon"></span>
-//       </button>
-//       <div className="collapse navbar-collapse" id="navbarNav">
-   
-//         <div className="navbar-nav ms-auto">
-//           <div className="btn-group" role="group">
-
-//             <Link to="/" className="nav-link px-3">
-//               Job Postings
-//             </Link>
-          
-//             <Link to="/" className="nav-link px-3">
-//               Post a Job
-//             </Link>
-          
-//           </div>
-          
-//         </div>
-//       </div>
-//     </div>
-//   </header>

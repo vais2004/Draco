@@ -5,10 +5,12 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './index.css';
 import App from './App';
 import PostAJob from './pages/PostAJob'
+import JobDetailsPage from './pages/JobDetailsPage';
 
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
-  { path: "/postajob",element:<PostAJob/>}
+  { path: "/postajob",element:<PostAJob/>},
+  {path: "/detial/:detailId", element: <JobDetailsPage/>}
   
 ]);
 
